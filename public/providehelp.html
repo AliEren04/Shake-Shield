@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shake Shield</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script
+  src="https://code.jquery.com/jquery-3.6.3.min.js"
+  integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+
+<nav class="navbar has-background-black" role="navigation" aria-label="main navivagion">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          <b style="color: red;">S</b><b style="color: red;">H</b><b style="color: red;">A</b><b style="color: red;">K</b><b style="color: red; margin: 2.2px;">E</b><b style="color: yellow;">S</b><b style="color: yellow;">H</b><b style="color: yellow;">I</b><b style="color: yellow;">E</b><b style="color: yellow;">L</b><b style="color: yellow;">D</b>
+        </a>
+    
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div id="navbarshakeshield" class="navbar-menu has-background-black">
+
+        <div class="navbar-end">
+                <a  class="navbar-item has-text-danger has-background-black" href="/askhelp">Ask Help</a>
+                <a class="navbar-item has-text-danger has-background-black" href="/supporters">Helpers To You</a>
+                <a  class="navbar-item has-text-primary has-background-black"href="/providehelp">Provide Help</a>
+                <a  class="navbar-item has-text-warning has-background-black"href="/earthquakes">Earthquakes</a>
+                <a  class="navbar-item has-text-warning has-background-black"href="#">V 1.0.0</a>
+                <a  href="/">🏠</a>
+            
+        </div>                            
+      </div>
+</nav>
+<br>
+<br>
+<div class="is-direction-row  is-justify-content-center is-tex is-align-items-center has-text-primary" style="text-align: center;">
+    Provide Help to People in earthquake in any country by filling form!
+</div>
+<br>
+<div style="text-align: center">
+    <form action="/shieldhelper" method="post">
+        <input style= "width: 30%; text-align: center; margin: 2px;"class="input is-hovered has-text-primary" type="text" placeholder="Name" name="name" onkeyup="if(this.value.length > 0) document.getElementById('submitbutton').disabled = false; else document.getElementById('submitbutton').disabled = true;">
+        <br>
+        <input style="width: 30%;text-align: center; margin: 2px; " class="input is-hovered has-text-primary" type="text" placeholder="Surname" name="surname" onkeyup="if(this.value.length > 0) document.getElementById('submitbutton').disabled = false; else document.getElementById('submitbutton').disabled = true;">
+        <br>
+        <input  style="width: 30%; text-align: center; margin: 2px; " class="input is-hovered has-text-primary" type="text" placeholder="What type of support you will provide?" name="helpprovided" onkeyup="if(this.value.length > 0) document.getElementById('submitbutton').disabled = false; else document.getElementById('submitbutton').disabled = true;">
+        <br>
+        <input style="width: 30%; text-align: center; margin: 2px;" class="input is-hovered has-text-primary" type="text" placeholder="Your  Address" name="helperaddress" onkeyup="if(this.value.length > 0) document.getElementById('submitbutton').disabled = false; else document.getElementById('submitbutton').disabled = true;">
+        <br>
+        <br>
+        <button type="submit" class="has-background-black has-text-primary"  id= "submitbutton" style=" width: 15%; text-align: center; margin: 2px; border-radius: 6px; display: none;">Submit</button>
+    </form>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<footer  id="helper" class="footer has-background-black has-text-primary">
+    <div class="content has-text-centered">
+      <p>
+        <strong style="color: aquamarine;">ShakeShield</strong> by <a style="margin: 1.5px;" href="https://github.com/AliEren04">AliEren04</a>. This is an open-source earth-quake restful api app.
+        <a style="margin: 1px;"href="#">Founder and Creator</a> is Ali Eren Tabak</a>.
+      </p>
+    </div>
+  </footer>
+
+<script>
+      $(document).ready(function() {
+
+// Check for click events on the navbar burger icon
+$(".navbar-burger").click(function() {
+
+    // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+    $(".navbar-burger").toggleClass("is-active");
+    $(".navbar-menu").toggleClass("is-active");
+
+});
+
+
+$('#helper').on('keyup keypress', function(e) {
+  var keyCode = e.keyCode || e.which;
+  if (keyCode === 13) { 
+    e.preventDefault();
+    return false;
+  }
+  
+});
+
+
+
+$(window).keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
+</script>
+<script>
+  
+</script>
+</body>
+</html>

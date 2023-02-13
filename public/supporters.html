@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shake Shield</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script
+  src="https://code.jquery.com/jquery-3.6.3.min.js"
+  integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar has-background-black" role="navigation" aria-label="main navivagion">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+              <b style="color: red;">S</b><b style="color: red;">H</b><b style="color: red;">A</b><b style="color: red;">K</b><b style="color: red; margin: 2.2px;">E</b><b style="color: yellow;">S</b><b style="color: yellow;">H</b><b style="color: yellow;">I</b><b style="color: yellow;">E</b><b style="color: yellow;">L</b><b style="color: yellow;">D</b>
+            </a>
+        
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+          <div id="navbarshakeshield" class="navbar-menu has-background-black">
+
+            <div class="navbar-end">
+                  
+                    <a  class="navbar-item has-text-danger has-background-black" href="/askhelp">Ask Help</a>
+                    <a class="navbar-item has-text-danger has-background-black" href="/supporters">Helpers To You</a>
+                    <a  class="navbar-item has-text-primary has-background-black"href="/providehelp">Provide Help</a>
+                    <a  class="navbar-item has-text-warning has-background-black"href="/earthquakes">Earthquakes</a>
+                    <a  class="navbar-item has-text-warning has-background-black"href="#">V 1.0.0</a>
+                    <a  href="/">🏠</a>
+                
+            </div>                            
+          </div>
+    </nav>
+
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title">EARTH QUAKE LAST  SUPPORTER AND SUPPORT PROVIDED!</p>
+      </header>
+      <div class="card-content">
+        <div class="content" id="content" style="font-size: 12.2px;">
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="padding-bottom: 1020px;">
+      <header class="card-header">
+        <p class="card-header-title">EARTH QUAKE ALL SUPPORTS PROVIDED AND SUPPORTERS!</p>
+      </header>
+      <div class="card-content">
+        <div class="content" id="content2" style="font-size: 12.2px;">
+          
+        </div>
+      </div>
+    </div>
+  
+
+    <footer class="footer has-background-black has-text-primary">
+      <div class="content has-text-centered">
+        <p>
+          <strong style="color: aquamarine;">ShakeShield</strong> by <a style="margin: 1.5px;" href="https://github.com/AliEren04">AliEren04</a>. This is an open-source earth-quake restful api app.
+          <a style="margin: 1px;"href="#">Founder and Creator</a> is Ali Eren Tabak</a>.
+        </p>
+      </div>
+    </footer>
+    <script>
+        $(document).ready(function() {
+
+// Check for click events on the navbar burger icon
+$(".navbar-burger").click(function() {
+
+    // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+    $(".navbar-burger").toggleClass("is-active");
+    $(".navbar-menu").toggleClass("is-active");
+
+});
+});
+    </script>
+    <script>
+        async function fetchHelper() {
+            let helpers =  await fetch('/helpers');
+            helpers = await helpers.text();
+            var myHelper = JSON.parse(helpers); 
+            let lastItem = myHelper.pop();
+            let helperParagraph = document.createElement('p');
+            helperParagraph.innerHTML =  "Name:" + " " + lastItem.name + ", " + "Surname:" + " " + lastItem.surname + ", " + "Help Provided:" + " " + lastItem.helpprovided + ", " + "Helper Address:" + " " + lastItem.helperaddress;
+            let content = document.getElementById('content'); 
+            content.value +=   content.appendChild(helperParagraph);
+        }
+        fetchHelper();
+
+        async function fetchHelpers() {
+            let allhelpers =  await fetch('/helpers');
+            allhelpers = await allhelpers.text();
+            var myAllHelpers = JSON.parse(allhelpers);
+            let content = document.getElementById('content2');
+            myAllHelpers.forEach(element => {
+            let helpsParagraph = document.createElement('p');
+            helpsParagraph.innerHTML = "Name:"+ " "+ element.name + " " + "Surname:" + " " + element.surname + ",  " + "Help Provided:" + "  " + element.helpprovided + ",  " + "Helper Address:" + " " + element.helperaddress;
+            content.appendChild(helpsParagraph);
+        });
+        }
+        fetchHelpers();
+    </script>
+</body>
+</html>
